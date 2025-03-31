@@ -6,7 +6,7 @@ API simples de autenticação com Flask e Banco de dados
 
 ```sh
 # install dependencies
-pip3 install -r requirements.txt --upgrade
+pip3 install -r requirements.txt
 
 # enter flask shell
 flask shell
