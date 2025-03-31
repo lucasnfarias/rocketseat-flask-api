@@ -1,4 +1,4 @@
-from __main__ import app, db, User
+from app import app, db, User
 from flask import request, jsonify
 from flask_login import login_user, current_user, logout_user, login_required
 import bcrypt
