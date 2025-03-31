@@ -6,8 +6,8 @@ from repository.database import db
 
 app = Flask(__name__)
 # sqlite config
-# app.config['SECRET_KEY'] = "your_secret_key"
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SECRET_KEY'] = "your_secret_key"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:admin123@localhost:3306/flask_crud'
 
 db.init_app(app)
