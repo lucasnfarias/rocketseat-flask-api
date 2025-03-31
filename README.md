@@ -1,12 +1,20 @@
-# rocketseat-flask-auth
+# rocketseat-flask-api
 
-API simples de autenticação com Flask e Banco de dados
+API simples com Flask e Banco de dados
+
+## Features
+
+- Auth: user creation, login and logout
+- Payments: mimetize pix payment using websockets
 
 ## How to run
 
 ```sh
 # install dependencies
 pip3 install -r requirements.txt
+
+# run mysql container
+docker-compose up -d
 
 # enter flask shell
 flask shell

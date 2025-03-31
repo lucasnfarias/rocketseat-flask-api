@@ -20,6 +20,7 @@ def load_user(user_id):
 
 # ROUTES
 import routes.auth
+import routes.payments
 
 if __name__ == '__main__':
       app.run(debug=True)
