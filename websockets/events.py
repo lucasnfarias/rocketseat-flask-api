@@ -4,6 +4,6 @@ from app import socketio
 def handle_connect():
   print("Client connected.")
 
-@socketio.on('message')
-def handle_message(data):
-    print(data)
+@socketio.on('disconnect')
+def handle_disconnect():
+    print("Client disconnected.")
