@@ -28,3 +28,10 @@ flask shell
 >>> db.session.commit()
 >>> exit()
 ```
+
+# Tests
+
+```sh
+cd tests
+pytest test_pix.py -v
+```
