@@ -10,7 +10,7 @@ API simples com Flask e Banco de dados
 ## How to run
 
 ```sh
-# install dependencies
+# install dependencies (or use virtual env - check section below)
 pip3 install -r requirements.txt
 
 # run mysql container
@@ -27,6 +27,28 @@ flask shell
 # commit your commands
 >>> db.session.commit()
 >>> exit()
+```
+
+# Using Virtualenv
+
+```sh
+# install virtualenv
+pip3 install virtualenv==20.25.0
+
+# create virtual env
+python3 -m virtualenv venv
+
+# enter the virtual env
+source venv/bin/activate
+
+# check installed libs
+pip3 freeze
+
+# install deps on virtual env
+pip3 install -r requirements.txt
+
+# exit virtual env
+deactivate
 ```
 
 # Tests
