@@ -1,6 +1,9 @@
 # mySQL docker volume
 mysql
 
+# QR code generated for payments
+static/img/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
