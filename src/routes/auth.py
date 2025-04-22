@@ -1,9 +1,12 @@
-from app import app, db, User
-from flask import request, jsonify
+from src.server.server import app, db
+from src.models.user import User
+from flask import request, jsonify, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 import bcrypt
 
-@app.route('/login', methods=["POST"])
+auth_route_bp = Blueprint("auth_routes", __name__)
+
+@auth_route_bp.route('/login', methods=["POST"])
 def login():
   data = request.json
   username = data.get("username")
@@ -18,14 +21,14 @@ def login():
 
   return jsonify({"message": "Invalid credentials."}), 401
 
-@app.route('/logout', methods=["GET"])
+@auth_route_bp.route('/logout', methods=["GET"])
 @login_required
 def logout():
   logout_user()
 
   return jsonify({"message": "Successful logout."})
 
-@app.route('/user', methods=["POST"])
+@auth_route_bp.route('/user', methods=["POST"])
 def create_user():
   data = request.json
   username = data.get("username")
@@ -42,7 +45,7 @@ def create_user():
 
   return jsonify({"message": "Invalid fields."}), 400
 
-@app.route('/user/<int:user_id>', methods=["GET"])
+@auth_route_bp.route('/user/<int:user_id>', methods=["GET"])
 @login_required
 def read_user(user_id):
   user = User.query.get(user_id)
@@ -52,7 +55,7 @@ def read_user(user_id):
 
   return jsonify({"message": "User not found."}), 404
 
-@app.route('/user/<int:user_id>', methods=["PUT"])
+@auth_route_bp.route('/user/<int:user_id>', methods=["PUT"])
 @login_required
 def update_user(user_id):
   data = request.json
@@ -73,7 +76,7 @@ def update_user(user_id):
 
   return jsonify({"message": "User not found."}), 404
 
-@app.route('/user/<int:user_id>', methods=["DELETE"])
+@auth_route_bp.route('/user/<int:user_id>', methods=["DELETE"])
 @login_required
 def delete_user(user_id):
   if current_user.role != "admin":

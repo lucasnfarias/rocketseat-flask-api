@@ -1,9 +1,13 @@
-from flask import request, jsonify, send_file, render_template
-from app import app, db, Payment, socketio
+from flask import Blueprint, request, jsonify, send_file, render_template
+from src.server.server import app, db, socketio
+from src.models.payment import Payment
+from src.interfaces.payments.pix import Pix
 from datetime import datetime, timedelta
-from interfaces.payments.pix import Pix
+import os
 
-@app.route('/payments/pix', methods=["POST"])
+payments_route_bp = Blueprint("payments_routes", __name__)
+
+@payments_route_bp.route('/payments/pix', methods=["POST"])
 def create_pix_payment():
   data = request.get_json()
 
@@ -29,11 +33,11 @@ def create_pix_payment():
     "payment": new_payment.to_dict()
   })
 
-@app.route('/payments/pix/qr_code/<file_name>', methods=['GET'])
+@payments_route_bp.route('/payments/pix/qr_code/<file_name>', methods=['GET'])
 def get_image(file_name):
-    return send_file(f"static/img/{file_name}.png", mimetype='image/png')
+    return send_file(f"../../static/img/{file_name}.png", mimetype='image/png')
 
-@app.route('/payments/pix/confirmation', methods=["POST"])
+@payments_route_bp.route('/payments/pix/confirmation', methods=["POST"])
 def pix_payment_confirmation():
   data = request.get_json()
 
@@ -55,7 +59,7 @@ def pix_payment_confirmation():
 
   return jsonify({"message": "The PIX payment has been confirmed."})
 
-@app.route('/payments/pix/<int:payment_id>', methods=["GET"])
+@payments_route_bp.route('/payments/pix/<int:payment_id>', methods=["GET"])
 def get_pix_payment_page(payment_id):
   payment = Payment.query.get(payment_id)
 

@@ -1,4 +1,4 @@
-from repository.database import db
+from src.repository.database import db
 
 class Payment(db.Model):
   id = db.Column(db.Integer, primary_key=True)
