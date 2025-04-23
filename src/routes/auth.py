@@ -28,7 +28,7 @@ def logout():
 
   return jsonify({"message": "Successful logout."})
 
-@auth_route_bp.route('/user', methods=["POST"])
+@auth_route_bp.route('/users', methods=["POST"])
 def create_user():
   data = request.json
   username = data.get("username")
@@ -45,7 +45,7 @@ def create_user():
 
   return jsonify({"message": "Invalid fields."}), 400
 
-@auth_route_bp.route('/user/<int:user_id>', methods=["GET"])
+@auth_route_bp.route('/users/<int:user_id>', methods=["GET"])
 @login_required
 def read_user(user_id):
   user = User.query.get(user_id)
@@ -55,7 +55,7 @@ def read_user(user_id):
 
   return jsonify({"message": "User not found."}), 404
 
-@auth_route_bp.route('/user/<int:user_id>', methods=["PUT"])
+@auth_route_bp.route('/users/<int:user_id>', methods=["PUT"])
 @login_required
 def update_user(user_id):
   data = request.json
@@ -76,7 +76,7 @@ def update_user(user_id):
 
   return jsonify({"message": "User not found."}), 404
 
-@auth_route_bp.route('/user/<int:user_id>', methods=["DELETE"])
+@auth_route_bp.route('/users/<int:user_id>', methods=["DELETE"])
 @login_required
 def delete_user(user_id):
   if current_user.role != "admin":
