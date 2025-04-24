@@ -10,4 +10,5 @@ qrcode==7.4.2
 pillow==10.2.0
 Flask-SocketIO==5.3.6
 
+numpy
 pytest
