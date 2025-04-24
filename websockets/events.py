@@ -1,4 +1,4 @@
-from app import socketio
+from src.server.server import socketio
 
 @socketio.on('connect')
 def handle_connect():

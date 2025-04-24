@@ -54,6 +54,5 @@ deactivate
 # Tests
 
 ```sh
-cd tests
-pytest test_pix.py -v
+pytest -s -v
 ```
