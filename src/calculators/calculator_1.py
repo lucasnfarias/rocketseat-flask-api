@@ -19,7 +19,7 @@ class Calculator1:
 
   def __validate_body(self, body: Dict) -> float:
     if "number" not in body:
-        raise Exception("body mal formatado!")
+        raise Exception("Invalid fields.")
 
     input_data = body["number"]
     return input_data
