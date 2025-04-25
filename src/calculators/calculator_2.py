@@ -5,6 +5,7 @@ from src.interfaces.drivers.calculation_handler import CalculationHandlerInterfa
 from src.drivers.numpy_handler import NumpyHandler
 
 class Calculator2:
+
   def __init__(self, calculation_handler: CalculationHandlerInterface) -> None:
     self.__calculation_handler = calculation_handler
 
@@ -28,7 +29,7 @@ class Calculator2:
     first_process_result = [(num * 11) ** 0.95 for num in input_data]
     result = self.__calculation_handler.standard_deviation(first_process_result)
 
-    return 1 / result
+    return 1/result
 
   def __format_response(self, calculated_number: float) -> Dict:
     return {
