@@ -1,9 +1,13 @@
 from typing import Dict, List
 from flask import request as FlaskRequest
 
+from src.interfaces.drivers.calculation_handler import CalculationHandlerInterface
 from src.drivers.numpy_handler import NumpyHandler
 
 class Calculator2:
+  def __init__(self, calculation_handler: CalculationHandlerInterface) -> None:
+    self.__calculation_handler = calculation_handler
+
   def calculate(self, request: FlaskRequest) -> Dict:  # type: ignore
     body = request.json
     input_data = self.__validate_body(body)
@@ -21,9 +25,8 @@ class Calculator2:
     return input_data
   
   def __process_data(self, input_data: List[float]) -> float:
-    numpy_handler = NumpyHandler()
     first_process_result = [(num * 11) ** 0.95 for num in input_data]
-    result = numpy_handler.standard_deviation(first_process_result)
+    result = self.__calculation_handler.standard_deviation(first_process_result)
 
     return 1 / result
 
