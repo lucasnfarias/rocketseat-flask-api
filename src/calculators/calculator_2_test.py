@@ -9,7 +9,7 @@ class MockRequest:
   def __init__(self, body: Dict) -> None:
     self.json = body
 
-class MockCalculationHandler(CalculationHandlerInterface):
+class MockCalculationHandler:
   def standard_deviation(self, numbers: List[float]) -> float:
     return 3
 
