@@ -2,7 +2,7 @@ from typing import Dict, List
 from flask import request as FlaskRequest
 
 from src.interfaces.drivers.calculation_handler import CalculationHandlerInterface
-from src.drivers.numpy_handler import NumpyHandler
+from src.errors.http_unprocessable_entity import HttpUnprocessableEntityError
 
 class Calculator2:
 
@@ -20,7 +20,7 @@ class Calculator2:
 
   def __validate_body(self, body: Dict) -> List[float]:
     if "numbers" not in body:
-      raise Exception("Invalid fields.")
+      raise HttpUnprocessableEntityError("Invalid fields.")
 
     input_data = body["numbers"]
     return input_data
