@@ -14,3 +14,27 @@ services:
       - "3306"
     volumes:
       - ./mysql:/var/lib/mysql
+
+  rs-flask-mq:
+    image: rabbitmq:4-management
+    container_name: rs-flask-mq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    expose:
+      - "5672"
+      - "15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: lfarias
+      RABBITMQ_DEFAULT_PASS: lfarias
+
+    volumes:
+      - ./rabbitmq/lib:/var/lib/rabbitmq
+      - ./rabbitmq/log:/var/log/rabbitmq
+
+volumes:
+  rabbitmq-lib:
+    driver: local
+  rabbitmq-log:
+    driver: local

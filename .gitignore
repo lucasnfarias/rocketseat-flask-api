@@ -1,5 +1,7 @@
-# mySQL docker volume
+# docker volumes
 mysql
+rabbitmq
+
 
 # QR code generated for payments
 static/img/*
