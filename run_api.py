@@ -1,7 +1,10 @@
+import os
 from src.server.server import socketio, app
 from dotenv import load_dotenv
 
-load_dotenv()
-
 if __name__ == '__main__':
-  socketio.run(app, host="0.0.0.0", port=5000, debug=True)
+  load_dotenv()
+  host=os.getenv("SERVER_HOST")
+  port=os.getenv("SERVER_PORT")
+
+  socketio.run(app, host=host, port=port, debug=True)

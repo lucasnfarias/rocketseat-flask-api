@@ -1,14 +1,15 @@
 import pika
 import json
+import os
 
 class RabbitMQPublisher:
   def __init__(self):
-    self.__host = "localhost"
-    self.__port = 5672
-    self.__username = "lfarias"
-    self.__password = "lfarias"
-    self.__exchange = "my_exchange"
-    self.__routing_key = ""
+    self.__host = os.getenv("RABBIT_MQ_HOST")
+    self.__port = os.getenv("RABBIT_MQ_PORT")
+    self.__username = os.getenv("RABBIT_MQ_USERNAME")
+    self.__password = os.getenv("RABBIT_MQ_PASSWORD")
+    self.__exchange = os.getenv("RABBIT_MQ_EXCHANGE")
+    self.__routing_key = os.getenv("RABBIT_MQ_ROUTING_KEY")
     self.__channel = self.create_channel()
 
   def create_channel(self):

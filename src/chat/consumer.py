@@ -1,14 +1,15 @@
+import os
 import pika
 
 from src.chat.callback import rabbitmq_callback
 
 class RabbitMQConsumer:
   def __init__(self):
-    self.__host = "localhost"
-    self.__port = 5672
-    self.__username = "lfarias"
-    self.__password = "lfarias"
-    self.__queue = "my_queue"
+    self.__host = os.getenv("RABBIT_MQ_HOST")
+    self.__port = os.getenv("RABBIT_MQ_PORT")
+    self.__username = os.getenv("RABBIT_MQ_USERNAME")
+    self.__password = os.getenv("RABBIT_MQ_PASSWORD")
+    self.__queue = os.getenv("RABBIT_MQ_QUEUE")
     self.__channel = self.create_channel()
 
   def create_channel(self):
