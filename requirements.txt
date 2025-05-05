@@ -13,3 +13,5 @@ Flask-SocketIO==5.3.6
 numpy
 pytest
 pika
+requests
+python-dotenv

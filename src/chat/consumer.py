@@ -1,7 +1,6 @@
 import pika
 
-def rabbitmq_callback(ch, method, properties, body):
-  print(body)
+from src.chat.callback import rabbitmq_callback
 
 class RabbitMQConsumer:
   def __init__(self):

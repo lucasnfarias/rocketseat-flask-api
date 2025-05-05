@@ -36,5 +36,8 @@ app.register_blueprint(calc_route_bp)
 from src.routes.payments import payments_route_bp
 app.register_blueprint(payments_route_bp)
 
+from src.routes.chat import chat_route_bp
+app.register_blueprint(chat_route_bp)
+
 # Websockets
 from src.websockets.events import *

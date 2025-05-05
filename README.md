@@ -6,6 +6,8 @@ API simples com Flask e Banco de dados
 
 - Auth: user creation, login and logout
 - Payments: mimetize pix payment using websockets
+- Calculators: focus on design patterns
+- Chat: use RabbitMQ to create a Telegram Chat Bot
 
 ## How to run
 
@@ -56,3 +58,14 @@ deactivate
 ```sh
 pytest -s -v
 ```
+
+# Chat
+
+To get the chat id from Telegram use this url:
+`https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates`
+
+To run your bot chat, first run the consumer:
+`python run_consumer.py`
+
+Then run the api with `python run_api.py` and use chat route to send a message:
+`POST http://localhost:3000/chat/telegram/send-message`

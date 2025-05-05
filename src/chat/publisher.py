@@ -33,7 +33,3 @@ class RabbitMQPublisher:
           delivery_mode=2
       )
     )
-
-publisher = RabbitMQPublisher()
-publisher.send_message({ "message": "testin" })
-publisher.send_message({ "message": "testin2222" })
